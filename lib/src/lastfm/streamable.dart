@@ -21,7 +21,6 @@ class Streamable {
     this.fullTrack,
   });
 
-  @JsonSerializable(includeIfNull: false)
   factory Streamable.fromJson(Map<String, dynamic> json) =>
       _$StreamableFromJson(json);
 

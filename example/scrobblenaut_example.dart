@@ -5,7 +5,6 @@
 
 import 'package:scrobblenaut/lastfm.dart';
 import 'package:scrobblenaut/scrobblenaut.dart';
-import 'package:scrobblenaut/src/core/lastfm.dart';
 
 import 'api_values.dart';
 

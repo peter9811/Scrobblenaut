@@ -10,16 +10,16 @@ import 'package:xml/xml.dart' as xml;
 /// response of [Track.scrobbleOnce] or [Track.scrobble].
 class ScrobbledTrack {
   /// Track name.
-  final String _track;
+  final String? _track;
 
   /// Album name.
-  final String _album;
+  final String? _album;
 
   /// Artist name.
-  final String _artist;
+  final String? _artist;
 
   /// Album Artist name.
-  final String _albumArtist;
+  final String? _albumArtist;
 
   /// True if is a corrected track.
   final bool? _tracksCorrected;
@@ -53,10 +53,10 @@ class ScrobbledTrack {
   );
 
   factory ScrobbledTrack.parse(xml.XmlElement scrobbleElement) {
-    String track;
-    String album;
-    String artist;
-    String albumArtist;
+    String? track;
+    String? album;
+    String? artist;
+    String? albumArtist;
     bool? tracksCorrected;
     bool? artistsCorrected;
     bool? albumsCorrected;
@@ -67,13 +67,13 @@ class ScrobbledTrack {
     bool? _s2b(supposedBool) =>
         LastFMValueNormalizer.NumberToBool(supposedBool);
 
-    track = scrobbleElement.findAllElements('track').first.text;
+    track = scrobbleElement.findAllElements('track').first.value;
 
-    album = scrobbleElement.findAllElements('album').first.text;
+    album = scrobbleElement.findAllElements('album').first.value;
 
-    artist = scrobbleElement.findAllElements('artist').first.text;
+    artist = scrobbleElement.findAllElements('artist').first.value;
 
-    albumArtist = scrobbleElement.findAllElements('albumArtist').first.text;
+    albumArtist = scrobbleElement.findAllElements('albumArtist').first.value;
 
     tracksCorrected = _s2b(scrobbleElement
         .findAllElements('track')
@@ -96,7 +96,7 @@ class ScrobbledTrack {
         .getAttribute('corrected'));
 
     timestamp = LastFMValueNormalizer.DateTimeFromUnixTime(
-        scrobbleElement.findAllElements('timestamp').first.text);
+        scrobbleElement.findAllElements('timestamp').first.value);
 
     ignoredMessageCode = _s2b(scrobbleElement
         .findAllElements('ignoredMessage')
@@ -118,16 +118,16 @@ class ScrobbledTrack {
   }
 
   /// Track name.
-  String get track => _track;
+  String? get track => _track;
 
   /// Album name.
-  String get album => _album;
+  String? get album => _album;
 
   /// Artist name.
-  String get artist => _artist;
+  String? get artist => _artist;
 
   /// Album Artist name.
-  String get albumArtist => _albumArtist;
+  String? get albumArtist => _albumArtist;
 
   /// True if is a corrected track.
   bool? get tracksCorrected => _tracksCorrected;

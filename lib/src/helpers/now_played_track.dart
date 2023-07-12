@@ -82,13 +82,13 @@ class NowPlayedTrack {
     bool? _s2b(supposedBool) =>
         LastFMValueNormalizer.NumberToBool(supposedBool);
 
-    track = responseXML.findAllElements('track').first.text;
+    track = responseXML.findAllElements('track').first.value ?? '';
 
-    album = responseXML.findAllElements('album').first.text;
+    album = responseXML.findAllElements('album').first.value ?? '';
 
-    artist = responseXML.findAllElements('artist').first.text;
+    artist = responseXML.findAllElements('artist').first.value ?? '';
 
-    albumArtist = responseXML.findAllElements('albumArtist').first.text;
+    albumArtist = responseXML.findAllElements('albumArtist').first.value ?? '';
 
     tracksCorrected = _s2b(
         responseXML.findAllElements('track').first.getAttribute('corrected'));

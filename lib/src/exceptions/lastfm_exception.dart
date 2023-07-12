@@ -7,9 +7,9 @@ import 'package:dio/dio.dart';
 import 'package:scrobblenaut/src/helpers/utils.dart';
 import 'package:xml/xml.dart' as xml;
 
-/// It implements [DioError] class.
+/// It implements [DioException] class.
 /// You can find [description] that gives a brief information of what happened.
-class LastFMException extends DioError {
+class LastFMException extends DioException {
   final int _errorCode;
   final String _description;
 
@@ -33,7 +33,7 @@ class LastFMException extends DioError {
 
       return LastFMException(
           errorCode: errorNode.getAttribute('code') ?? '',
-          description: errorNode.text);
+          description: errorNode.value ?? '');
     } else {
       // Else is a Json...
       return LastFMException(
