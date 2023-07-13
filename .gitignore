@@ -3,6 +3,8 @@
 # Files and directories created by pub
 .dart_tool/
 .packages
+# Generated dart files by build_runner
+*.g.dart
 # Remove the following pattern if you wish to check in your lock file
 pubspec.lock
 
