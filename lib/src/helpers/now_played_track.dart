@@ -79,8 +79,7 @@ class NowPlayedTrack {
       throw ScrobblenautException(description: 'Response unrecognized.');
     }
 
-    bool? _s2b(supposedBool) =>
-        LastFMValueNormalizer.NumberToBool(supposedBool);
+    bool? s2b(supposedBool) => LastFMValueNormalizer.numberToBool(supposedBool);
 
     track = responseXML.findAllElements('track').first.value ?? '';
 
@@ -90,24 +89,15 @@ class NowPlayedTrack {
 
     albumArtist = responseXML.findAllElements('albumArtist').first.value ?? '';
 
-    tracksCorrected = _s2b(
-        responseXML.findAllElements('track').first.getAttribute('corrected'));
+    tracksCorrected = s2b(responseXML.findAllElements('track').first.getAttribute('corrected'));
 
-    artistsCorrected = _s2b(
-        responseXML.findAllElements('artist').first.getAttribute('corrected'));
+    artistsCorrected = s2b(responseXML.findAllElements('artist').first.getAttribute('corrected'));
 
-    albumsCorrected = _s2b(
-        responseXML.findAllElements('album').first.getAttribute('corrected'));
+    albumsCorrected = s2b(responseXML.findAllElements('album').first.getAttribute('corrected'));
 
-    albumArtistsCorrected = _s2b(responseXML
-        .findAllElements('albumArtist')
-        .first
-        .getAttribute('corrected'));
+    albumArtistsCorrected = s2b(responseXML.findAllElements('albumArtist').first.getAttribute('corrected'));
 
-    ignoredMessageCode = _s2b(responseXML
-        .findAllElements('ignoredMessage')
-        .first
-        .getAttribute('code'));
+    ignoredMessageCode = s2b(responseXML.findAllElements('ignoredMessage').first.getAttribute('code'));
 
     return NowPlayedTrack._(
       status,

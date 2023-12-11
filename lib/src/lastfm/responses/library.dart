@@ -1,4 +1,4 @@
-part of lastfm_objects;
+part of '../../lastfm.dart';
 
 /// This object represents a response about an artist library from a search.
 @JsonSerializable(includeIfNull: false)
@@ -13,8 +13,7 @@ class LibraryGetArtistsResponse {
 
   LibraryGetArtistsResponse({this.artist, this.attr});
 
-  factory LibraryGetArtistsResponse.fromJson(Map<String, dynamic> json) =>
-      _$LibraryGetArtistsResponseFromJson(json);
+  factory LibraryGetArtistsResponse.fromJson(Map<String, dynamic> json) => _$LibraryGetArtistsResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$LibraryGetArtistsResponseToJson(this);
 }

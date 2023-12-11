@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents an album.
 @JsonSerializable(includeIfNull: false)
@@ -17,7 +17,7 @@ class Album {
   String? name;
 
   /// Artist of the album.
-  @JsonKey(name: 'artist', fromJson: LastFMValueNormalizer.ArtistParser)
+  @JsonKey(name: 'artist', fromJson: LastFMValueNormalizer.artistParser)
   Artist? artist;
 
   /// LastFM url of the album.
@@ -37,11 +37,11 @@ class Album {
   List<Tag>? tags;
 
   /// The number of listeners of the album.
-  @JsonKey(name: 'listeners', fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'listeners', fromJson: LastFMValueNormalizer.numberToInt)
   int? listeners; // Last.FM treats this as String
 
   /// The number of plays of the album.
-  @JsonKey(name: 'playcount', fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'playcount', fromJson: LastFMValueNormalizer.numberToInt)
   int? playCount; // Last.FM treats this as String
 
   /// MusicBrainz ID.

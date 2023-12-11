@@ -25,13 +25,11 @@ class ArtistMethods {
     required List<String> tags,
   }) async {
     if (!_api.isAuth) {
-      return Future.error(ScrobblenautException(
-          description: "You can't use this method unless you Authenticate."));
+      return Future.error(ScrobblenautException(description: "You can't use this method unless you Authenticate."));
     }
 
     if (tags.length > 10) {
-      return Future.error(ScrobblenautException(
-          description: "You've supplied more than 10 tags."));
+      return Future.error(ScrobblenautException(description: "You've supplied more than 10 tags."));
     }
 
     final parameters = {
@@ -39,12 +37,9 @@ class ArtistMethods {
       'tags': generateStringFromList(tags),
     };
 
-    final request =
-        Request(api: _api, method: 'artist.addTags', parameters: parameters)
-          ..signRequest();
+    final request = Request(api: _api, method: 'artist.addTags', parameters: parameters)..signRequest();
 
-    final response =
-        PostResponseHelper.parse(await request.send(mode: RequestMode.POST));
+    final response = PostResponseHelper.parse(await request.send(mode: RequestMode.post));
 
     if (response.status) {
       return true;
@@ -64,18 +59,15 @@ class ArtistMethods {
       'artist': artist,
     };
 
-    final request = Request(
-        api: _api, method: 'artist.getCorrection', parameters: parameters);
+    final request = Request(api: _api, method: 'artist.getCorrection', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final corrections = response['corrections'];
 
     if (corrections is List) {
       return List.generate(
-          corrections.length,
-          (i) => Artist.fromJson(
-              response['corrections']['correction']['artist'][i]));
+          corrections.length, (i) => Artist.fromJson(response['corrections']['correction']['artist'][i]));
     }
 
     // A list of a single correction.
@@ -93,8 +85,7 @@ class ArtistMethods {
     bool autoCorrect = false,
   }) async {
     if (artist == null && mbid == null) {
-      return Future.error(ScrobblenautException(
-          description: 'This method requires at least artist or mbid.'));
+      return Future.error(ScrobblenautException(description: 'This method requires at least artist or mbid.'));
     }
 
     final parameters = {
@@ -105,11 +96,9 @@ class ArtistMethods {
       'autocorrect': (autoCorrect ? 1 : 0),
     };
 
-    final request =
-        Request(api: _api, method: 'artist.getInfo', parameters: parameters);
+    final request = Request(api: _api, method: 'artist.getInfo', parameters: parameters);
 
-    return (Artist.fromJson(
-        (await request.send(mode: RequestMode.GET))['artist']));
+    return (Artist.fromJson((await request.send(mode: RequestMode.get))['artist']));
   }
 
   /// Get all the artists similar to this artist.
@@ -122,8 +111,7 @@ class ArtistMethods {
     bool autoCorrect = false,
   }) async {
     if (artist == null && mbid == null) {
-      return Future.error(ScrobblenautException(
-          description: 'This method requires at least artist or mbid.'));
+      return Future.error(ScrobblenautException(description: 'This method requires at least artist or mbid.'));
     }
 
     final parameters = {
@@ -133,17 +121,15 @@ class ArtistMethods {
       'autocorrect': (autoCorrect ? 1 : 0),
     };
 
-    final request =
-        Request(api: _api, method: 'artist.getSimilar', parameters: parameters);
+    final request = Request(api: _api, method: 'artist.getSimilar', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final similarArtists = response['similarartists']['artist'];
 
     return similarArtists == null
         ? null
-        : List.generate((similarArtists as List).length,
-            (i) => Artist.fromJson(similarArtists[i]));
+        : List.generate((similarArtists as List).length, (i) => Artist.fromJson(similarArtists[i]));
   }
 
   /// Get the tags applied by an individual user to an artist on Last.fm.
@@ -162,15 +148,13 @@ class ArtistMethods {
   }) async {
     if (artist == null && mbid == null) {
       return Future.error(
-        ScrobblenautException(
-            description: 'This method requires at least artist or mbid.'),
+        ScrobblenautException(description: 'This method requires at least artist or mbid.'),
       );
     }
 
     if (!_api.isAuth && user == null) {
       return Future.error(
-        ScrobblenautException(
-            description: "You're not authenticated, you must use user."),
+        ScrobblenautException(description: "You're not authenticated, you must use user."),
       );
     }
 
@@ -181,16 +165,13 @@ class ArtistMethods {
       'autocorrect': (autoCorrect ? 1 : 0),
     };
 
-    final request =
-        Request(api: _api, method: 'artist.getTags', parameters: parameters);
+    final request = Request(api: _api, method: 'artist.getTags', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final tags = response['tags']['tag'];
 
-    return tags == null
-        ? null
-        : List.generate((tags as List).length, (i) => Tag.fromJson(tags[i]));
+    return tags == null ? null : List.generate((tags as List).length, (i) => Tag.fromJson(tags[i]));
   }
 
   /// Get the top albums for an artist on Last.fm, ordered by popularity.
@@ -203,8 +184,7 @@ class ArtistMethods {
     int limit = 50,
   }) async {
     if (artist == null && mbid == null) {
-      return Future.error(ScrobblenautException(
-          description: 'This method requires at least artist or mbid.'));
+      return Future.error(ScrobblenautException(description: 'This method requires at least artist or mbid.'));
     }
 
     final parameters = {
@@ -214,17 +194,13 @@ class ArtistMethods {
       'limit': limit,
     };
 
-    final request = Request(
-        api: _api, method: 'artist.getTopAlbums', parameters: parameters);
+    final request = Request(api: _api, method: 'artist.getTopAlbums', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topAlbums = response['topalbums']['album'];
 
-    return topAlbums == null
-        ? null
-        : List.generate(
-            (topAlbums as List).length, (i) => Album.fromJson(topAlbums[i]));
+    return topAlbums == null ? null : List.generate((topAlbums as List).length, (i) => Album.fromJson(topAlbums[i]));
   }
 
   /// Get the top tags for an artist on Last.fm, ordered by popularity.
@@ -236,8 +212,7 @@ class ArtistMethods {
     bool autoCorrect = false,
   }) async {
     if (artist == null && mbid == null) {
-      return Future.error(ScrobblenautException(
-          description: 'This method requires at least artist or mbid.'));
+      return Future.error(ScrobblenautException(description: 'This method requires at least artist or mbid.'));
     }
     final parameters = {
       'artist': artist,
@@ -245,17 +220,13 @@ class ArtistMethods {
       'autocorrect': (autoCorrect ? 1 : 0),
     };
 
-    final request =
-        Request(api: _api, method: 'artist.getTopTags', parameters: parameters);
+    final request = Request(api: _api, method: 'artist.getTopTags', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topTags = response['toptags']['tag'];
 
-    return topTags == null
-        ? null
-        : List.generate(
-            (topTags as List).length, (i) => Tag.fromJson(topTags[i]));
+    return topTags == null ? null : List.generate((topTags as List).length, (i) => Tag.fromJson(topTags[i]));
   }
 
   /// Get the top tracks by an artist on Last.fm, ordered by popularity.
@@ -269,8 +240,7 @@ class ArtistMethods {
     bool autoCorrect = false,
   }) async {
     if (artist == null && mbid == null) {
-      return Future.error(ScrobblenautException(
-          description: 'This method requires at least artist or mbid.'));
+      return Future.error(ScrobblenautException(description: 'This method requires at least artist or mbid.'));
     }
 
     final parameters = {
@@ -281,17 +251,13 @@ class ArtistMethods {
       'autocorrect': (autoCorrect ? 1 : 0),
     };
 
-    final request = Request(
-        api: _api, method: 'artist.getTopTracks', parameters: parameters);
+    final request = Request(api: _api, method: 'artist.getTopTracks', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topTracks = response['toptracks']['track'];
 
-    return topTracks == null
-        ? null
-        : List.generate(
-            (topTracks as List).length, (i) => Track.fromJson(topTracks[i]));
+    return topTracks == null ? null : List.generate((topTracks as List).length, (i) => Track.fromJson(topTracks[i]));
   }
 
   /// Remove a user's tag from an artist.
@@ -302,8 +268,7 @@ class ArtistMethods {
     required String tag,
   }) async {
     if (!_api.isAuth) {
-      return Future.error(ScrobblenautException(
-          description: "You can't use this method unless you Authenticate."));
+      return Future.error(ScrobblenautException(description: "You can't use this method unless you Authenticate."));
     }
 
     final parameters = {
@@ -311,12 +276,9 @@ class ArtistMethods {
       'tag': tag,
     };
 
-    final request =
-        Request(api: _api, method: 'artist.removeTag', parameters: parameters)
-          ..signRequest();
+    final request = Request(api: _api, method: 'artist.removeTag', parameters: parameters)..signRequest();
 
-    final response =
-        PostResponseHelper.parse(await request.send(mode: RequestMode.POST));
+    final response = PostResponseHelper.parse(await request.send(mode: RequestMode.post));
 
     if (response.status) {
       return true;
@@ -339,10 +301,9 @@ class ArtistMethods {
       'limit': limit,
     };
 
-    final request =
-        Request(api: _api, method: 'artist.search', parameters: parameters);
+    final request = Request(api: _api, method: 'artist.search', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     return ArtistSearchResults.fromJson(response['results']);
   }

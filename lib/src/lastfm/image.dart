@@ -3,18 +3,14 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents an image.
 @JsonSerializable(includeIfNull: false)
 class Image {
   /// This is the size of the image.
   /// Check [Size] for more info.
-  @JsonKey(
-      name: 'size',
-      defaultValue: null,
-      disallowNullValue: false,
-      unknownEnumValue: Size.None)
+  @JsonKey(name: 'size', defaultValue: null, disallowNullValue: false, unknownEnumValue: Size.none)
   Size? size;
 
   // TODO: change the name?

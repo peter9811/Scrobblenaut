@@ -3,32 +3,32 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../../lastfm.dart';
 
 /// List of different periods used in LastFM methods.
 enum Period {
-  WEEK,
-  MONTH,
-  MONTHS3,
-  MONTHS6,
-  YEAR,
-  OVERALL,
+  week,
+  month,
+  months3,
+  months6,
+  year,
+  overall,
 }
 
 extension PeriodExtension on Period {
   String? get value {
     switch (this) {
-      case Period.WEEK:
+      case Period.week:
         return '7day';
-      case Period.MONTH:
+      case Period.month:
         return '1month';
-      case Period.MONTHS3:
+      case Period.months3:
         return '3month';
-      case Period.MONTHS6:
+      case Period.months6:
         return '6month';
-      case Period.YEAR:
+      case Period.year:
         return '12month';
-      case Period.OVERALL:
+      case Period.overall:
         return 'overall';
       default:
         return null;

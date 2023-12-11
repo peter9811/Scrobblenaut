@@ -60,9 +60,9 @@ class Request {
   /// It sends the request to the API.
   Future<dynamic> send({required RequestMode mode}) async {
     switch (mode) {
-      case RequestMode.GET:
+      case RequestMode.get:
         return await _api.client.get(parameters: _parameters);
-      case RequestMode.POST:
+      case RequestMode.post:
         return await _api.client.post(parameters: _parameters);
     }
   }

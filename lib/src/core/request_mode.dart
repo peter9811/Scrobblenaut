@@ -5,6 +5,6 @@
 
 /// Helps managing each request mode inside each methods.
 enum RequestMode {
-  GET,
-  POST,
+  get,
+  post,
 }

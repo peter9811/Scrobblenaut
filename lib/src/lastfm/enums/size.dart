@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../../lastfm.dart';
 
 /// It's a list of different Size.
 enum Size {
@@ -13,5 +13,5 @@ enum Size {
   extralarge,
   mega,
   empty,
-  None,
+  none,
 }

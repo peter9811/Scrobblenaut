@@ -31,7 +31,7 @@ class LibraryMethods {
 
     final request = Request(api: _api, method: 'library.getArtists', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final artists = response['artists'];
 

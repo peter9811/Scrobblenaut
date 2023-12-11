@@ -13,7 +13,7 @@ void main() async {
   print('####################################################################');
 
   final lastFMAuth = await LastFM.authenticate(
-    apiKey: APIValues.API,
+    apiKey: APIValues.api,
     apiSecret: APIValues.secret,
     username: APIValues.username,
     password: APIValues.password,
@@ -25,10 +25,9 @@ void main() async {
   print('###########################album.addTags############################');
 
   // album.addTags
-  print('Result of addTag request: ' +
-      (await scrobblenaut.album.addTags(
-              artist: 'RADWIMPS', album: 'Your Name.', tags: ['Anime']))
-          .toString());
+  print('Result of addTag request: ${await scrobblenaut.album.addTags(artist: 'RADWIMPS', album: 'Your Name.', tags: [
+        'Anime'
+      ])}');
 
   print('#########################album.getInfo##############################');
 
@@ -50,33 +49,27 @@ void main() async {
   print('#########################album.getTags##############################');
 
   // album.getTags
-  (await scrobblenaut.album.getTags(album: 'Your Name.', artist: 'RADWIMPS'))
-      ?.forEach((Tag tag) {
+  (await scrobblenaut.album.getTags(album: 'Your Name.', artist: 'RADWIMPS'))?.forEach((Tag tag) {
     print('Tag name: ${tag.name} | Tag url: ${tag.url}');
   });
 
   print('########################album.getTopTags############################');
 
   // album.getTopTags
-  (await scrobblenaut.album.getTopTags(album: 'Your Name.', artist: 'RADWIMPS'))
-      ?.forEach((Tag tag) {
+  (await scrobblenaut.album.getTopTags(album: 'Your Name.', artist: 'RADWIMPS'))?.forEach((Tag tag) {
     print('Tag Name: ${tag.name} | Tag URL: ${tag.url}');
   });
 
   print('#########################album.removeTag############################');
 
   // album.removeTag
-  print('Result of removeTag request: ' +
-      (await scrobblenaut.album
-              .removeTag(album: 'Your Name.', artist: 'RADWIMPS', tag: 'anime'))
-          .toString());
+  print(
+      'Result of removeTag request: ${await scrobblenaut.album.removeTag(album: 'Your Name.', artist: 'RADWIMPS', tag: 'anime')}');
 
   print('########################album.search################################');
 
   // album.search
-  (await scrobblenaut.album.search(album: 'Your name.'))
-      .albums
-      ?.forEach((Album album) {
+  (await scrobblenaut.album.search(album: 'Your name.')).albums?.forEach((Album album) {
     print('Album title from search: ${album.name}');
   });
 

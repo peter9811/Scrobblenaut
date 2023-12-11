@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents an artist.
 @JsonSerializable(includeIfNull: false)
@@ -25,7 +25,7 @@ class Artist {
   List<Tag>? tags;
 
   /// Number of tags onto the artist.
-  @JsonKey(name: 'tagcount', fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'tagcount', fromJson: LastFMValueNormalizer.numberToInt)
   int? tagCount;
 
   /// The artist stats if a user is given.
@@ -37,8 +37,7 @@ class Artist {
   Bio? bio;
 
   /// A list of similar artists.
-  @JsonKey(
-      name: 'similar', fromJson: LastFMValueNormalizer.similarArtistsExtractor)
+  @JsonKey(name: 'similar', fromJson: LastFMValueNormalizer.similarArtistsExtractor)
   List<Artist>? similarArtists;
 
   // TODO: Match meaning.
@@ -46,20 +45,19 @@ class Artist {
   String? match;
 
   /// True if the Artist is streamable.
-  @JsonKey(
-      name: 'streamable', fromJson: LastFMValueNormalizer.isArtistStreamable)
+  @JsonKey(name: 'streamable', fromJson: LastFMValueNormalizer.isArtistStreamable)
   bool? isStreamable;
 
   /// The number of listeners.
-  @JsonKey(name: 'listeners', fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'listeners', fromJson: LastFMValueNormalizer.numberToInt)
   int? listeners;
 
   /// The number of plays of the artist.
-  @JsonKey(name: 'playcount', fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'playcount', fromJson: LastFMValueNormalizer.numberToInt)
   int? playCount;
 
   /// Information about ongoing Tours.
-  @JsonKey(name: 'ontour', fromJson: LastFMValueNormalizer.NumberToBool)
+  @JsonKey(name: 'ontour', fromJson: LastFMValueNormalizer.numberToBool)
   bool? onTour;
 
   /// MusicBrainz ID.

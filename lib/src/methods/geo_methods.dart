@@ -28,17 +28,15 @@ class GeoMethods {
       'limit': limit,
     };
 
-    final request =
-        Request(api: _api, method: 'geo.getTopArtists', parameters: parameters);
+    final request = Request(api: _api, method: 'geo.getTopArtists', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topArtists = response['topartists']['artist'];
 
     return topArtists == null
         ? null
-        : List.generate(
-            (topArtists as List).length, (i) => Artist.fromJson(topArtists[i]));
+        : List.generate((topArtists as List).length, (i) => Artist.fromJson(topArtists[i]));
   }
 
   /// Get the most popular tracks on Last.fm last week by country.
@@ -57,10 +55,9 @@ class GeoMethods {
       'limit': limit,
     };
 
-    final request =
-        Request(api: _api, method: 'geo.getTopTracks', parameters: parameters);
+    final request = Request(api: _api, method: 'geo.getTopTracks', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topTracks = response['tracks']['track'];
 
@@ -68,12 +65,11 @@ class GeoMethods {
       return [];
     } else {
       // This operation is necessary because the tracks have different duration.
-      var fixTopTracks = List.generate(
-          (topTracks as List).length, (i) => Track.fromJson(topTracks[i]));
+      var fixTopTracks = List.generate((topTracks as List).length, (i) => Track.fromJson(topTracks[i]));
 
-      fixTopTracks.forEach((Track track) {
+      for (var track in fixTopTracks) {
         track.duration = track.duration != null ? track.duration! * 1000 : null;
-      });
+      }
       return fixTopTracks;
     }
   }

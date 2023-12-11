@@ -19,10 +19,9 @@ class LastFM {
   final bool _isAuth;
 
   /// Default constructor.
-  LastFM._(this._apiKey, this._apiSecret, this._sessionKey, this._username,
-      this._passwordHash, this._isAuth)
+  LastFM._(this._apiKey, this._apiSecret, this._sessionKey, this._username, this._passwordHash, this._isAuth)
       : _client = SpaceShip(
-          base_url: 'https://ws.audioscrobbler.com/2.0/',
+          baseUrl: 'https://ws.audioscrobbler.com/2.0/',
         );
 
   /// Default kind of API usage.

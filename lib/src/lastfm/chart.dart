@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents a chart.
 @JsonSerializable(includeIfNull: false)
@@ -14,15 +14,15 @@ class Chart {
   /// The starting date of the chart.
   @JsonKey(
       name: 'from',
-      fromJson: LastFMValueNormalizer.DateTimeFromUnixTime,
-      toJson: LastFMValueNormalizer.DateTimeToUnixTime)
+      fromJson: LastFMValueNormalizer.dateTimeFromUnixTime,
+      toJson: LastFMValueNormalizer.dateTimeToUnixTime)
   DateTime? fromDate;
 
   /// The ending date of the chart.
   @JsonKey(
       name: 'to',
-      fromJson: LastFMValueNormalizer.DateTimeFromUnixTime,
-      toJson: LastFMValueNormalizer.DateTimeToUnixTime)
+      fromJson: LastFMValueNormalizer.dateTimeFromUnixTime,
+      toJson: LastFMValueNormalizer.dateTimeToUnixTime)
   DateTime? toDate;
 
   Chart({

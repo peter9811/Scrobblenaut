@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../../lastfm.dart';
 
 /// Tagging type for [User.getPersonalTags].
 enum TaggingType {

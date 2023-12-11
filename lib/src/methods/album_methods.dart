@@ -26,13 +26,11 @@ class AlbumMethods {
     required List<String> tags,
   }) async {
     if (!_api.isAuth) {
-      return Future.error(ScrobblenautException(
-          description: "You can't use this method unless you Authenticate."));
+      return Future.error(ScrobblenautException(description: "You can't use this method unless you Authenticate."));
     }
 
     if (tags.length > 10) {
-      return Future.error(ScrobblenautException(
-          description: "You've supplied more than 10 tags."));
+      return Future.error(ScrobblenautException(description: "You've supplied more than 10 tags."));
     }
 
     final parameters = {
@@ -41,12 +39,9 @@ class AlbumMethods {
       'tags': generateStringFromList(tags),
     };
 
-    final request =
-        Request(api: _api, method: 'album.addTags', parameters: parameters)
-          ..signRequest();
+    final request = Request(api: _api, method: 'album.addTags', parameters: parameters)..signRequest();
 
-    final response =
-        PostResponseHelper.parse(await request.send(mode: RequestMode.POST));
+    final response = PostResponseHelper.parse(await request.send(mode: RequestMode.post));
 
     if (response.status) {
       return true;
@@ -82,10 +77,9 @@ class AlbumMethods {
       'lang': language.code,
     };
 
-    final request =
-        Request(api: _api, method: 'album.getInfo', parameters: parameters);
+    final request = Request(api: _api, method: 'album.getInfo', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     // This operation is necessary because the tracks have different duration
     // from [track.getInfo].
@@ -116,8 +110,7 @@ class AlbumMethods {
     }
 
     if (!_api.isAuth && user == null) {
-      return Future.error(ScrobblenautException(
-          description: "You're not authenticated, you must use user."));
+      return Future.error(ScrobblenautException(description: "You're not authenticated, you must use user."));
     }
 
     final parameters = {
@@ -128,16 +121,13 @@ class AlbumMethods {
       'autocorrect': (autoCorrect ? 1 : 0),
     };
 
-    final request =
-        Request(api: _api, method: 'album.getTags', parameters: parameters);
+    final request = Request(api: _api, method: 'album.getTags', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final tags = response['tags']['tag'];
 
-    return tags == null
-        ? null
-        : List.generate((tags as List).length, (i) => Tag.fromJson(tags[i]));
+    return tags == null ? null : List.generate((tags as List).length, (i) => Tag.fromJson(tags[i]));
   }
 
   /// Get the top tags for an album on Last.fm, ordered by popularity.
@@ -162,16 +152,13 @@ class AlbumMethods {
       'autocorrect': (autoCorrect ? 1 : 0),
     };
 
-    final request =
-        Request(api: _api, method: 'album.getTopTags', parameters: parameters);
+    final request = Request(api: _api, method: 'album.getTopTags', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final tags = response['toptags']['tag'];
 
-    return tags == null
-        ? null
-        : List.generate((tags as List).length, (i) => Tag.fromJson(tags[i]));
+    return tags == null ? null : List.generate((tags as List).length, (i) => Tag.fromJson(tags[i]));
   }
 
   /// Remove a user's tag from an album.
@@ -183,8 +170,7 @@ class AlbumMethods {
     required String tag,
   }) async {
     if (!_api.isAuth) {
-      return Future.error(ScrobblenautException(
-          description: "You can't use this method unless you Authenticate."));
+      return Future.error(ScrobblenautException(description: "You can't use this method unless you Authenticate."));
     }
 
     final parameters = {
@@ -193,12 +179,9 @@ class AlbumMethods {
       'tag': tag,
     };
 
-    final request =
-        Request(api: _api, method: 'album.removeTag', parameters: parameters)
-          ..signRequest();
+    final request = Request(api: _api, method: 'album.removeTag', parameters: parameters)..signRequest();
 
-    final response =
-        PostResponseHelper.parse(await request.send(mode: RequestMode.POST));
+    final response = PostResponseHelper.parse(await request.send(mode: RequestMode.post));
 
     if (response.status) {
       return true;
@@ -221,10 +204,9 @@ class AlbumMethods {
       'limit': limit,
     };
 
-    final request =
-        Request(api: _api, method: 'album.search', parameters: parameters);
+    final request = Request(api: _api, method: 'album.search', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     return AlbumSearchResults.fromJson(response['results']);
   }

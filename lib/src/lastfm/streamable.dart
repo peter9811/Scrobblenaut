@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents a streamable object.
 @JsonSerializable(includeIfNull: false)
@@ -21,8 +21,7 @@ class Streamable {
     this.fullTrack,
   });
 
-  factory Streamable.fromJson(Map<String, dynamic> json) =>
-      _$StreamableFromJson(json);
+  factory Streamable.fromJson(Map<String, dynamic> json) => _$StreamableFromJson(json);
 
   Map<String, dynamic> toJson() => _$StreamableToJson(this);
 }

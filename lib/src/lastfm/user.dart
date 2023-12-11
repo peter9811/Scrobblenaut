@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents a user.
 @JsonSerializable(includeIfNull: false)
@@ -37,15 +37,15 @@ class User {
   List<Image>? image;
 
   // If it's a subscriber.
-  @JsonKey(name: 'subscriber', fromJson: LastFMValueNormalizer.NumberToBool)
+  @JsonKey(name: 'subscriber', fromJson: LastFMValueNormalizer.numberToBool)
   bool? subscriber;
 
   // The number of playlist of the user.
-  @JsonKey(name: 'playlists', fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'playlists', fromJson: LastFMValueNormalizer.numberToInt)
   int? playlists;
 
   /// The play count of the user.
-  @JsonKey(name: 'playcount', fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'playcount', fromJson: LastFMValueNormalizer.numberToInt)
   int? playCount;
 
   /// The registration information of the user.

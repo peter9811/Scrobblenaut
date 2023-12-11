@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../../lastfm.dart';
 
 /// This is a object that helps scrobbling multiple tracks.
 @JsonSerializable(includeIfNull: false)
@@ -18,7 +18,7 @@ class Scrobble {
 
   /// The TimeStamp of the scrobble.
   /// If You're not doing strange stuff, you can use DateTime.now().
-  @JsonKey(name: 'timestamp', toJson: LastFMValueNormalizer.DateTimeToUnixTime)
+  @JsonKey(name: 'timestamp', toJson: LastFMValueNormalizer.dateTimeToUnixTime)
   DateTime timestamp;
 
   /// The [Album] name to scrobble.
@@ -37,7 +37,7 @@ class Scrobble {
   /// If the user chose this song, set on True,
   /// else (if the song was chosen by someone else, such as a radio station
   /// or recommendation service) set it to False.
-  @JsonKey(name: 'chosenByUser', toJson: LastFMValueNormalizer.BoolToIntBool)
+  @JsonKey(name: 'chosenByUser', toJson: LastFMValueNormalizer.boolToIntBool)
   bool? chosenByUser;
 
   /// The track number of the [Track] to scrobble.
@@ -49,8 +49,7 @@ class Scrobble {
   String? mbid;
 
   /// The duration of the [Track] to scrobble.
-  @JsonKey(
-      name: 'duration', toJson: LastFMValueNormalizer.DurationToMilliseconds)
+  @JsonKey(name: 'duration', toJson: LastFMValueNormalizer.durationToMilliseconds)
   Duration? duration;
 
   Scrobble({
@@ -66,8 +65,7 @@ class Scrobble {
     this.mbid,
   }) : timestamp = timestamp ?? DateTime.now();
 
-  factory Scrobble.fromJson(Map<String, dynamic> json) =>
-      _$ScrobbleFromJson(json);
+  factory Scrobble.fromJson(Map<String, dynamic> json) => _$ScrobbleFromJson(json);
 
   Map<String, dynamic> toJson() => _$ScrobbleToJson(this);
 }

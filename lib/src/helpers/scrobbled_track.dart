@@ -64,8 +64,7 @@ class ScrobbledTrack {
     DateTime? timestamp;
     bool? ignoredMessageCode;
 
-    bool? _s2b(supposedBool) =>
-        LastFMValueNormalizer.NumberToBool(supposedBool);
+    bool? s2b(supposedBool) => LastFMValueNormalizer.numberToBool(supposedBool);
 
     track = scrobbleElement.findAllElements('track').first.value;
 
@@ -75,33 +74,17 @@ class ScrobbledTrack {
 
     albumArtist = scrobbleElement.findAllElements('albumArtist').first.value;
 
-    tracksCorrected = _s2b(scrobbleElement
-        .findAllElements('track')
-        .first
-        .getAttribute('corrected'));
+    tracksCorrected = s2b(scrobbleElement.findAllElements('track').first.getAttribute('corrected'));
 
-    artistsCorrected = _s2b(scrobbleElement
-        .findAllElements('artist')
-        .first
-        .getAttribute('corrected'));
+    artistsCorrected = s2b(scrobbleElement.findAllElements('artist').first.getAttribute('corrected'));
 
-    albumsCorrected = _s2b(scrobbleElement
-        .findAllElements('album')
-        .first
-        .getAttribute('corrected'));
+    albumsCorrected = s2b(scrobbleElement.findAllElements('album').first.getAttribute('corrected'));
 
-    albumArtistsCorrected = _s2b(scrobbleElement
-        .findAllElements('albumArtist')
-        .first
-        .getAttribute('corrected'));
+    albumArtistsCorrected = s2b(scrobbleElement.findAllElements('albumArtist').first.getAttribute('corrected'));
 
-    timestamp = LastFMValueNormalizer.DateTimeFromUnixTime(
-        scrobbleElement.findAllElements('timestamp').first.value);
+    timestamp = LastFMValueNormalizer.dateTimeFromUnixTime(scrobbleElement.findAllElements('timestamp').first.value);
 
-    ignoredMessageCode = _s2b(scrobbleElement
-        .findAllElements('ignoredMessage')
-        .first
-        .getAttribute('code'));
+    ignoredMessageCode = s2b(scrobbleElement.findAllElements('ignoredMessage').first.getAttribute('code'));
 
     return ScrobbledTrack._(
       track,

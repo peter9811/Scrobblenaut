@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents a track.
 @JsonSerializable(includeIfNull: false)
@@ -17,7 +17,7 @@ class Track {
   Album? album;
 
   /// The artist that has created the track.
-  @JsonKey(name: 'artist', fromJson: LastFMValueNormalizer.ArtistParser)
+  @JsonKey(name: 'artist', fromJson: LastFMValueNormalizer.artistParser)
   Artist? artist;
 
   // LastFM url of the track.
@@ -25,9 +25,7 @@ class Track {
   String? url;
 
   /// The duration of the track.
-  @JsonKey(
-      name: 'duration',
-      fromJson: LastFMValueNormalizer.MillisecondsDurationParser)
+  @JsonKey(name: 'duration', fromJson: LastFMValueNormalizer.millisecondsDurationParser)
   Duration? duration;
 
   /// A list of different size of the track cover.
@@ -45,18 +43,18 @@ class Track {
 
   // TODO: what's this for real?
   /// Streamable object of the track.
-  @JsonKey(name: 'streamable', fromJson: LastFMValueNormalizer.StreamableParser)
+  @JsonKey(name: 'streamable', fromJson: LastFMValueNormalizer.streamableParser)
   Streamable? streamable;
 
   /// The number of listeners of the track.
   @JsonKey(
     name: 'listeners',
-    fromJson: LastFMValueNormalizer.NumberToInt,
+    fromJson: LastFMValueNormalizer.numberToInt,
   )
   int? listeners;
 
   /// The number of plays of the track.
-  @JsonKey(name: 'playcount', fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'playcount', fromJson: LastFMValueNormalizer.numberToInt)
   int? playCount;
 
   /// The wiki of the track.
@@ -68,7 +66,7 @@ class Track {
   String? mbid;
 
   /// If called from a [User] data, True if the user loved the track.
-  @JsonKey(name: 'loved', fromJson: LastFMValueNormalizer.NumberToBool)
+  @JsonKey(name: 'loved', fromJson: LastFMValueNormalizer.numberToBool)
   bool? loved;
 
   Track({

@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents a Registration, which contains a date ad a text.
 /// TODO: is this useful or it can be just a DateTime?
@@ -12,12 +12,12 @@ class Registered {
   /// The DateTime of the registration.
   @JsonKey(
       name: 'unixtime',
-      fromJson: LastFMValueNormalizer.DateTimeFromUnixTime,
-      toJson: LastFMValueNormalizer.DateTimeToUnixTime)
+      fromJson: LastFMValueNormalizer.dateTimeFromUnixTime,
+      toJson: LastFMValueNormalizer.dateTimeToUnixTime)
   DateTime? unixTime;
 
   // TODO: what's this? is this necessary?
-  @JsonKey(name: '#text', fromJson: LastFMValueNormalizer.MeaninglessNumber)
+  @JsonKey(name: '#text', fromJson: LastFMValueNormalizer.meaninglessNumber)
   String? text;
 
   Registered({
@@ -25,8 +25,7 @@ class Registered {
     this.text,
   });
 
-  factory Registered.fromJson(Map<String, dynamic> json) =>
-      _$RegisteredFromJson(json);
+  factory Registered.fromJson(Map<String, dynamic> json) => _$RegisteredFromJson(json);
 
   Map<String, dynamic> toJson() => _$RegisteredToJson(this);
 }

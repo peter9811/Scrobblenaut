@@ -13,7 +13,7 @@ void main() async {
   print('####################################################################');
 
   final lastFMAuth = await LastFM.authenticate(
-    apiKey: APIValues.API,
+    apiKey: APIValues.api,
     apiSecret: APIValues.secret,
     username: APIValues.username,
     password: APIValues.password,
@@ -48,10 +48,7 @@ void main() async {
   print('#########################user.getPersonalTags#######################');
 
   // user.getPersonalTags
-  (await userInstance.getPersonalTags(
-          tag: 'anime', taggingType: TaggingType.track))
-      .tracks
-      ?.forEach((Track track) {
+  (await userInstance.getPersonalTags(tag: 'anime', taggingType: TaggingType.track)).tracks?.forEach((Track track) {
     print('Track Name: ${track.name} | Track URL: ${track.url}');
   });
 
@@ -86,18 +83,18 @@ void main() async {
   print('#####################user.getWeeklyAlbumChart#######################');
 
   // user.getTopTracks
-  (await userInstance.getTopTracks()).forEach((Track track) {
+  for (var track in (await userInstance.getTopTracks())) {
     print('Top Tracks Name: ${track.name} | Top Tracks URL: ${track.url} |'
         ' Duration: ${track.duration}');
-  });
+  }
 
   print('#####################user.getWeeklyArtistChart######################');
 
   // user.getWeeklyAlbumChart
-  (await userInstance.getTopTracks()).forEach((Track track) {
+  for (var track in (await userInstance.getTopTracks())) {
     print('Top Tracks Name: ${track.name} | Top Tracks URL: ${track.url} |'
         ' Duration: ${track.duration}');
-  });
+  }
 
   print('#####################user.getWeeklyArtistChart######################');
 
@@ -117,8 +114,7 @@ void main() async {
 
   // user.getWeeklyTrackChart
   (await userInstance.getWeeklyTrackChart())?.forEach((Track track) {
-    print(
-        'Weekly Tracks Name: ${track.name} | Weekly Tracks URL: ${track.url} |'
+    print('Weekly Tracks Name: ${track.name} | Weekly Tracks URL: ${track.url} |'
         ' Duration: ${track.duration}');
   });
 

@@ -13,7 +13,7 @@ void main() async {
   print('####################################################################');
 
   final lastFMAuth = await LastFM.authenticate(
-    apiKey: APIValues.API,
+    apiKey: APIValues.api,
     apiSecret: APIValues.secret,
     username: APIValues.username,
     password: APIValues.password,
@@ -31,8 +31,7 @@ void main() async {
   print('###########################album.addTags############################');
 
   // album.addTags
-  print('Result of addTag request: ' +
-      (await albumInstance.addTags(tags: ['Anime'])).toString());
+  print('Result of addTag request: ${await albumInstance.addTags(tags: ['Anime'])}');
 
   print('#########################album.getInfo##############################');
 
@@ -66,8 +65,7 @@ void main() async {
   print('#########################album.removeTag############################');
 
   // album.removeTag
-  print('Result of removeTag request: ' +
-      (await albumInstance.removeTag(tag: 'anime')).toString());
+  print('Result of removeTag request: ${await albumInstance.removeTag(tag: 'anime')}');
 
   print('########################album.search################################');
 

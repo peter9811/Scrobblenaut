@@ -13,7 +13,7 @@ void main() async {
   print('####################################################################');
 
   final lastFMAuth = await LastFM.authenticate(
-    apiKey: APIValues.API,
+    apiKey: APIValues.api,
     apiSecret: APIValues.secret,
     username: APIValues.username,
     password: APIValues.password,
@@ -45,8 +45,7 @@ void main() async {
   print('########################tag.getTopArtists###########################');
 
   // tag.getTopArtists
-  (await scrobblenaut.tag.getTopArtists(tag: 'anime'))
-      ?.forEach((Artist artist) {
+  (await scrobblenaut.tag.getTopArtists(tag: 'anime'))?.forEach((Artist artist) {
     print('Top Artist Name: ${artist.name}');
   });
 
@@ -67,8 +66,7 @@ void main() async {
   print('#######################tag.getWeeklyChartList#######################');
 
   // tag.getWeeklyChartList
-  (await scrobblenaut.tag.getWeeklyChartList(tag: 'anime'))
-      ?.forEach((Chart chart) {
+  (await scrobblenaut.tag.getWeeklyChartList(tag: 'anime'))?.forEach((Chart chart) {
     print('Chart FromDate: ${chart.fromDate} | Chart ToDate: ${chart.toDate}');
   });
 

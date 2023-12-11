@@ -6,7 +6,7 @@ A package to interact with the official
 
 [Last.FM API](https://last.fm/api/).
 
-[![Dart Version](https://img.shields.io/badge/Dart-2.12.1-blue.svg?style=flat-square&logo=dart)](https://dart.dev)
+[![Dart Version](https://img.shields.io/badge/Dart-3.2.3-blue.svg?style=flat-square&logo=dart)](https://dart.dev)
 [![Build Status](https://img.shields.io/travis/Nebulino/Scrobblenaut/master?style=flat-square&logo=travis)](https://travis-ci.org/github/Nebulino/Scrobblenaut)
 [![Last.FM](https://img.shields.io/badge/API-v.2.0-00aced.svg?style=flat-square&logo=last.fm)](https://www.last.fm/api/)
 [![Nebulino](https://img.shields.io/badge/💬%20Telegram-Nebulino-blue.svg?style=flat-square)](https://t.me/Nebulino/)
@@ -24,7 +24,7 @@ I hope it will become something great.
 
 First build the .g files for Serializable (if you clone the repo):
 
-```pub run build_runner build```
+```dart run build_runner build```
 
 A simple usage example:
 

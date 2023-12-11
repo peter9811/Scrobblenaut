@@ -3,32 +3,25 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../lastfm.dart';
 
 /// This object represents the AlbumSearchResults from a search.
 @JsonSerializable(includeIfNull: false)
 class AlbumSearchResults {
   /// A list of matched albums from the search.
-  @JsonKey(
-      name: 'albummatches', fromJson: LastFMValueNormalizer.albumsExtractor)
+  @JsonKey(name: 'albummatches', fromJson: LastFMValueNormalizer.albumsExtractor)
   List<Album>? albums;
 
   /// The number of generated matches from the search.
-  @JsonKey(
-      name: 'opensearch:TotalResults',
-      fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'opensearch:TotalResults', fromJson: LastFMValueNormalizer.numberToInt)
   int? totalResults;
 
   /// A value that sign the starting index of the search.
-  @JsonKey(
-      name: 'opensearch:StartIndex',
-      fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'opensearch:StartIndex', fromJson: LastFMValueNormalizer.numberToInt)
   int? statingIndex;
 
   /// Number of matches per page.
-  @JsonKey(
-      name: 'opensearch:ItemsPerPage',
-      fromJson: LastFMValueNormalizer.NumberToInt)
+  @JsonKey(name: 'opensearch:ItemsPerPage', fromJson: LastFMValueNormalizer.numberToInt)
   int? itemsPerPage;
 
   AlbumSearchResults({
@@ -38,8 +31,7 @@ class AlbumSearchResults {
     this.itemsPerPage,
   });
 
-  factory AlbumSearchResults.fromJson(Map<String, dynamic> json) =>
-      _$AlbumSearchResultsFromJson(json);
+  factory AlbumSearchResults.fromJson(Map<String, dynamic> json) => _$AlbumSearchResultsFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlbumSearchResultsToJson(this);
 }

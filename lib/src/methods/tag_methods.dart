@@ -26,10 +26,9 @@ class TagMethods {
       'lang': language.code,
     };
 
-    final request =
-        Request(api: _api, method: 'tag.getInfo', parameters: parameters);
+    final request = Request(api: _api, method: 'tag.getInfo', parameters: parameters);
 
-    return (Tag.fromJson((await request.send(mode: RequestMode.GET))['tag']));
+    return (Tag.fromJson((await request.send(mode: RequestMode.get))['tag']));
   }
 
   /// Search for tags similar to this one.
@@ -43,17 +42,15 @@ class TagMethods {
       'tag': tag,
     };
 
-    final request =
-        Request(api: _api, method: 'tag.getSimilar', parameters: parameters);
+    final request = Request(api: _api, method: 'tag.getSimilar', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final similarTags = response['similartags']['tag'];
 
     return similarTags == null
         ? null
-        : List.generate(
-            (similarTags as List).length, (i) => Tag.fromJson(similarTags[i]));
+        : List.generate((similarTags as List).length, (i) => Tag.fromJson(similarTags[i]));
   }
 
   /// Get the top albums tagged by this tag, ordered by tag count.
@@ -70,17 +67,13 @@ class TagMethods {
       'limit': limit,
     };
 
-    final request =
-        Request(api: _api, method: 'tag.getTopAlbums', parameters: parameters);
+    final request = Request(api: _api, method: 'tag.getTopAlbums', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topAlbums = response['albums']['album'];
 
-    return topAlbums == null
-        ? null
-        : List.generate(
-            (topAlbums as List).length, (i) => Album.fromJson(topAlbums[i]));
+    return topAlbums == null ? null : List.generate((topAlbums as List).length, (i) => Album.fromJson(topAlbums[i]));
   }
 
   /// Get the top artists tagged by this tag, ordered by tag count.
@@ -97,17 +90,15 @@ class TagMethods {
       'limit': limit,
     };
 
-    final request =
-        Request(api: _api, method: 'tag.getTopArtists', parameters: parameters);
+    final request = Request(api: _api, method: 'tag.getTopArtists', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topArtists = response['topartists']['artist'];
 
     return topArtists == null
         ? null
-        : List.generate(
-            (topArtists as List).length, (i) => Artist.fromJson(topArtists[i]));
+        : List.generate((topArtists as List).length, (i) => Artist.fromJson(topArtists[i]));
   }
 
   /// Fetches the top global tags on Last.fm,
@@ -117,14 +108,11 @@ class TagMethods {
   Future<List<Tag>?> getTopTags() async {
     final request = Request(api: _api, method: 'tag.getTopTags');
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topTags = response['toptags']['tag'];
 
-    return topTags == null
-        ? null
-        : List.generate(
-            (topTags as List).length, (i) => Tag.fromJson(topTags[i]));
+    return topTags == null ? null : List.generate((topTags as List).length, (i) => Tag.fromJson(topTags[i]));
   }
 
   /// Get the top tracks tagged by this tag, ordered by tag count.
@@ -141,17 +129,13 @@ class TagMethods {
       'limit': limit,
     };
 
-    final request =
-        Request(api: _api, method: 'tag.getTopTracks', parameters: parameters);
+    final request = Request(api: _api, method: 'tag.getTopTracks', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topTracks = response['tracks']['track'];
 
-    return topTracks == null
-        ? null
-        : List.generate(
-            (topTracks as List).length, (i) => Track.fromJson(topTracks[i]));
+    return topTracks == null ? null : List.generate((topTracks as List).length, (i) => Track.fromJson(topTracks[i]));
   }
 
   /// Get a list of available charts for this tag,
@@ -165,16 +149,12 @@ class TagMethods {
       'tag': tag,
     };
 
-    final request = Request(
-        api: _api, method: 'tag.getWeeklyChartList', parameters: parameters);
+    final request = Request(api: _api, method: 'tag.getWeeklyChartList', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final chartList = response['weeklychartlist']['chart'];
 
-    return chartList == null
-        ? null
-        : List.generate(
-            (chartList as List).length, (i) => Chart.fromJson(chartList[i]));
+    return chartList == null ? null : List.generate((chartList as List).length, (i) => Chart.fromJson(chartList[i]));
   }
 }

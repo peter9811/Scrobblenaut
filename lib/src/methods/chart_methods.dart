@@ -26,17 +26,15 @@ class ChartMethods {
       'limit': limit,
     };
 
-    final request = Request(
-        api: _api, method: 'chart.getTopArtists', parameters: parameters);
+    final request = Request(api: _api, method: 'chart.getTopArtists', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topArtists = response['artists']['artist'];
 
     return topArtists == null
         ? null
-        : List.generate(
-            (topArtists as List).length, (i) => Artist.fromJson(topArtists[i]));
+        : List.generate((topArtists as List).length, (i) => Artist.fromJson(topArtists[i]));
   }
 
   /// Get the top tags chart.
@@ -51,17 +49,13 @@ class ChartMethods {
       'limit': limit,
     };
 
-    final request =
-        Request(api: _api, method: 'chart.getTopTags', parameters: parameters);
+    final request = Request(api: _api, method: 'chart.getTopTags', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topTags = response['tags']['tag'];
 
-    return topTags == null
-        ? null
-        : List.generate(
-            (topTags as List).length, (i) => Tag.fromJson(topTags[i]));
+    return topTags == null ? null : List.generate((topTags as List).length, (i) => Tag.fromJson(topTags[i]));
   }
 
   /// Get the top tracks chart.
@@ -76,16 +70,12 @@ class ChartMethods {
       'limit': limit,
     };
 
-    final request = Request(
-        api: _api, method: 'chart.getTopTracks', parameters: parameters);
+    final request = Request(api: _api, method: 'chart.getTopTracks', parameters: parameters);
 
-    final response = await request.send(mode: RequestMode.GET);
+    final response = await request.send(mode: RequestMode.get);
 
     final topTrack = response['tracks']['track'];
 
-    return topTrack == null
-        ? null
-        : List.generate(
-            (topTrack as List).length, (i) => Track.fromJson(topTrack[i]));
+    return topTrack == null ? null : List.generate((topTrack as List).length, (i) => Track.fromJson(topTrack[i]));
   }
 }

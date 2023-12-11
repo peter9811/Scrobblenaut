@@ -3,7 +3,7 @@
 //                  Copyright (c) 2020 Nebulino                 //
 //                                                              //
 
-part of lastfm_objects;
+part of '../../lastfm.dart';
 
 /// This is a object that helps scrobbling multiple tracks.
 @JsonSerializable(includeIfNull: false)
@@ -33,8 +33,7 @@ class NowPlaying {
   String? mbid;
 
   /// The duration of the [Track] to scrobble.
-  @JsonKey(
-      name: 'duration', toJson: LastFMValueNormalizer.DurationToMilliseconds)
+  @JsonKey(name: 'duration', toJson: LastFMValueNormalizer.durationToMilliseconds)
   Duration? duration;
 
   /// The album artist - if this differs from the track artist.
@@ -52,8 +51,7 @@ class NowPlaying {
     this.albumArtist,
   });
 
-  factory NowPlaying.fromJson(Map<String, dynamic> json) =>
-      _$NowPlayingFromJson(json);
+  factory NowPlaying.fromJson(Map<String, dynamic> json) => _$NowPlayingFromJson(json);
 
   Map<String, dynamic> toJson() => _$NowPlayingToJson(this);
 }

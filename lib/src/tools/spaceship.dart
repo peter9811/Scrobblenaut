@@ -15,15 +15,14 @@ import 'package:scrobblenaut/src/helpers/utils.dart';
 class SpaceShip {
   late Dio _dio;
 
-  SpaceShip({required String base_url, String? proxy}) {
+  SpaceShip({required String baseUrl, String? proxy}) {
     _dio = Dio(
       BaseOptions(
-          baseUrl: '$base_url',
+          baseUrl: baseUrl,
           headers: {'Accept-Charset': 'utf-8', 'User-Agent': 'DartyFM'},
           contentType: Headers.formUrlEncodedContentType,
           responseType: ResponseType.json),
-    )..interceptors.add(InterceptorsWrapper(onRequest:
-          (RequestOptions options, RequestInterceptorHandler handler) {
+    )..interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
         options.queryParameters.removeWhere((key, value) => value == null);
 
         if (options.data == null) {
@@ -46,9 +45,7 @@ class SpaceShip {
           }
         } else {
           if (response.data['error'] != null) {
-            throw LastFMException(
-                errorCode: response.data['error'].toString(),
-                description: response.data['message']);
+            throw LastFMException(errorCode: response.data['error'].toString(), description: response.data['message']);
           }
         }
 
@@ -62,8 +59,7 @@ class SpaceShip {
       }));
   }
 
-  Future<dynamic> get(
-      {required Map<String, dynamic> parameters, retryLimit = 5}) async {
+  Future<dynamic> get({required Map<String, dynamic> parameters, retryLimit = 5}) async {
     parameters['format'] = 'json';
     // TODO: Catch errors from API and retry
     // for (var i = 0; i < retryLimit; i++) {
