@@ -2,7 +2,7 @@
 
 <div align="center">
 Just a Last.FM API Wrapper for Dart.
-A package to interact with the official 
+A package to interact with the official
 
 [Last.FM API](https://last.fm/api/).
 
@@ -20,11 +20,12 @@ I'm doing it just for fun, so... use at your own risk.
 I hope it will become something great.
 
 ^-^
+
 ## Usage
 
 First build the .g files for Serializable (if you clone the repo):
 
-```dart run build_runner build```
+`dart run build_runner build`
 
 A simple usage example:
 
@@ -36,7 +37,7 @@ import 'package:scrobblenaut/scrobblenaut.dart';
 void main() async {
   final lastFMAuth = await LastFM.noAuth(apiKey: APIValues.API);
   final scrobblenaut = Scrobblenaut(lastFM: lastFMAuth);
-  
+
   // Start using the Wrapper...
 }
 
@@ -47,6 +48,7 @@ void main() async {
 Add Scrobblenaut dependency on `pubspec.yaml`:
 
 From GitHub (for example: branch-name >> dev-build):
+
 ```yaml
 dependencies:
   scrobblenaut:
@@ -67,15 +69,15 @@ dependencies:
 
 All the methods are available.
 Needs more time to check for problems caused by a bad information management from the API side.
-For example: 
+For example:
 
-  - Tracks duration information taken from an album like method is different from a Track duration taken from a 
-track info query.
+- Tracks duration information taken from an album like method is different from a Track duration taken from a
+  track info query.
 
-  - Some variables can have strange content such as FIXME on some Track duration.
+- Some variables can have strange content such as FIXME on some Track duration.
 
-  - Many more. For now with my tests, this is the best I can handle. I just need more track and usage of my package
-to track different type of errors that can occurs.
+- Many more. For now with my tests, this is the best I can handle. I just need more track and usage of my package
+  to track different type of errors that can occurs.
 
 ### Future of the package after all methods implemented
 
@@ -84,12 +86,13 @@ I have some ideas, and I'm going to continue to support it, just stay tuned.
 
 ### For the documentation
 
-For now, You have to download the repo and run *dartdoc* on the console,
-on the root of the package. When I upload this package on *pub.dev* you can use the documentation from there directly.
+For now, You have to download the repo and run _dartdoc_ on the console,
+on the root of the package. When I upload this package on _pub.dev_ you can use the documentation from there directly.
 
 There's 2 type of usage:
-  - with authentication;
-  - without authentication.
+
+- with authentication;
+- without authentication.
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 

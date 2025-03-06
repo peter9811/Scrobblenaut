@@ -1,4 +1,5 @@
 ## 2.0.5+1
+
 ### Fix dio/adapters
 
 - Removed proxy support from dio.
@@ -6,12 +7,14 @@
 - Updated dependencies.
 
 ## 2.0.5
+
 ### Small version bump
 
 - Add support to Dart | Native & Js.
 - Preparing for null-safety support.
 
 ## 2.0.4
+
 ### Small version bump
 
 - Add the possibility to login with already a md5 password.
@@ -25,21 +28,25 @@
 - Updated the pubspec.yaml.
 
 ## 2.0.2
+
 ### Small bug-fix
 
 - Remove remained print().
 - Fix README.md.
 - Fix CHANGELOG.md.
 - Fix build.ps1.
-- Fix clean.ps1.  
+- Fix clean.ps1.
 
 ## 2.0.1
 
-  - Fix Artists in Tracks gained from user.getRecentTracks().
+- Fix Artists in Tracks gained from user.getRecentTracks().
 
 ## 2.0.0
+
 ### Major Update
+
 #### In some objects You can apply object-related methods
+
 ##### Status
 
 - Album object supported.
@@ -51,39 +58,43 @@
 ##### Dev Changelog
 
 - Add capability of applying UserMethods in User.
-- Created example-related. Watch them on *./example*.
+- Created example-related. Watch them on _./example_.
 - Fixed clean.sh.
-- Added .g.dart to make possible the usage from *git* in pubspec.yaml 
+- Added .g.dart to make possible the usage from _git_ in pubspec.yaml
 - Updated the **README.md** for Major Update.
-- Updated the **CHANGELOG.md**. *This thing You're reading right now*
+- Updated the **CHANGELOG.md**. _This thing You're reading right now_
 
 ## 1.0.5
+
 ### Add capability of applying TrackMethods in Track
 
 - Created new track example.
 - Fixed TrackMethods.getTags.
-- Changed *lang* in Methods into *language*
+- Changed _lang_ in Methods into _language_
 - Updated **CHANGELOG.md**.
-- *TrackMethods.scrobbleOnce()* **into** *TrackMethods.scrobble()*
-- *TrackMethods.scrobbleOnceFromObject()* **into** *TrackMethods.scrobbleFromObject()*
-- *TrackMethods.scrobble()* **into** *TrackMethods.multiScrobble()*
+- _TrackMethods.scrobbleOnce()_ **into** _TrackMethods.scrobble()_
+- _TrackMethods.scrobbleOnceFromObject()_ **into** _TrackMethods.scrobbleFromObject()_
+- _TrackMethods.scrobble()_ **into** _TrackMethods.multiScrobble()_
 
 ## 1.0.4
+
 ### Add capability of applying TagMethods in Tag
 
 - Created new tag example.
-- Changed *lang* in Methods into *language*
+- Changed _lang_ in Methods into _language_
 - Updated **CHANGELOG.md**.
 
 ## 1.0.3
+
 ### Add capability of applying ArtistMethods in Artist
 
 - Created new artist example.
 - Fixed some Future<dynamic> left.
-- Fixed some *examples*.
+- Fixed some _examples_.
 - Updated **CHANGELOG.md**.
 
 ## 1.0.2
+
 ### Add capability of applying AlbumMethods in Albums
 
 - Created new album example.
@@ -91,13 +102,17 @@
 - Updated **CHANGELOG.md**.
 
 ## 1.0.1
+
 ### Fix Documentation
 
 - Created lastfm_methods library.
 
 ## 1.0.0
+
 ### Finally! First Release!
+
 #### All methods implemented
+
 ##### Status
 
 - Auth and No Auth method supported.
@@ -123,12 +138,14 @@
 - Fixed **Geo.getTopTracks()** for the Track Duration problem.
 - Fixed **Tag.count**.
 - Created **Taggings** for **User.getPersonalTags**.
-- Modified some examples. Watch them on *./example*.
+- Modified some examples. Watch them on _./example_.
 - Updated the **README.md** for First Release.
-- Updated the **CHANGELOG.md**. *This thing You're reading right now*
+- Updated the **CHANGELOG.md**. _This thing You're reading right now_
 
 ## 0.1.6
+
 ### Huge update
+
 #### Seventh Pre-Release. One more to go...
 
 - Implemented Track Methods.
@@ -145,6 +162,7 @@
 - Updated the README.
 
 ## 0.1.5
+
 ### Sixth Pre-Release. Still, a long way...
 
 - Implemented Tag Methods.
@@ -154,6 +172,7 @@
 - Updated the README.
 
 ## 0.1.4
+
 ### Fifth Pre-Release. Still, a long way...
 
 - Implemented Library Methods.
@@ -162,6 +181,7 @@
 - Updated the README.
 
 ## 0.1.3
+
 ### Fourth Pre-Release. Still, a long way...
 
 - Implemented Geo Methods.
@@ -170,13 +190,15 @@
 - Added geo example.
 
 ## 0.1.2
+
 ### Third Pre-Release. Still, a long way...
 
-  - Implemented Chart Methods.
-  - Updated the changelog.
-  - Added chart example.
+- Implemented Chart Methods.
+- Updated the changelog.
+- Added chart example.
 
 ## 0.1.1
+
 ### Second Pre-Release. Still, a long way...
 
 - Implemented Artist Methods.
@@ -188,6 +210,7 @@
 - Added more Helpers.
 
 ## 0.1.0
+
 ### First Pre-Release. Still, a long way...
 
 - Created a solid base for request. Now it's just a copy-paste, I hope.
